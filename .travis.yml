@@ -1,5 +1,14 @@
-language: minimal
-before_script:
-- make install
+language: node_js
+
+node_js:
+  - "node"
+
+install:
+  - make install
+
 script:
-- make test
+  - make test
+
+branches:
+  only:
+    - master

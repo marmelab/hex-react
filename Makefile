@@ -7,9 +7,12 @@ help:
 
 install: ## Install project's dependencies
 	@echo "Install project deps"
+	npm install
 
 start: ## Start project
 	@echo "Start the project"
+	npm start
 
 test: ## Launch the project's tests
 	@echo "Launch the tests"
+	npm test
