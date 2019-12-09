@@ -1,12 +1,12 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, Button} from 'react-native';
-import Svg, {Polygon} from 'react-native-svg';
+import Svg, {Polygon, SvgXml} from 'react-native-svg';
 
 export default function App() {
     return (
         <View style={styles.container}>
             <Text>Hex Game</Text>
-            <Stone></Stone>
+            <Board></Board>
         </View>
     );
 }
@@ -20,25 +20,19 @@ const styles = StyleSheet.create({
     },
 });
 
+const xml = `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="174" height="200"
+                 viewBox="0 0 173.20508075688772 200">
+                <path fill="#EEEEEE" d="M86.60254037844386 0L173.20508075688772 50L173.20508075688772 150L86.60254037844386 200L0 150L0 50Z"></path>
+            </svg>`
+
 class Stone extends React.Component {
     render() {
         return (
-            // <Button title="">
-            // <Polygon
-            //     points="5,1.32 15,1.32 20,10 15,18.66 5,18.66 0,10"
-            //     fill="#DDDDDD"
-            //     stroke="grey"
-            //     strokeWidth="1"
-            // />
-            <Svg height="100" width="100">
-                <Polygon
-                    points="0,15 1,1 1,-1 0,-15 -1,1 -1,1"
-                    fill="#DDDDDD"
-                    stroke="grey"
-                    strokeWidth="1"
-                />
-            </Svg>
-            // </Button>
+            <TouchableOpacity onPress={this._onPressButton}>
+                <Svg height="100" width="100">
+                    <SvgXml xml={xml} width="100%" height="100%"/>
+                </Svg>
+            </TouchableOpacity>
         );
     }
 }
