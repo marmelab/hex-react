@@ -1,5 +1,4 @@
 .PHONY: default install start test
-MAKEFLAGS += --silent
 
 .DEFAULT_GOAL := help
 
