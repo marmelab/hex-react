@@ -6,7 +6,7 @@ export default function App() {
     return (
         <View style={styles.container}>
             <Text>Hex Game</Text>
-            <Board></Board>
+            <Board/>
         </View>
     );
 }
@@ -49,17 +49,17 @@ class Board extends React.Component {
         return (
             <View>
                 <Text className="status">{status}</Text>
-                <View className="board-row">
+                <View style={{flex: 1, flexDirection: 'row'}} className="board-row">
                     {this.renderStone(0)}
                     {this.renderStone(1)}
                     {this.renderStone(2)}
                 </View>
-                <View className="board-row">
+                <View style={{flex: 1, flexDirection: 'row'}} className="board-row">
                     {this.renderStone(3)}
                     {this.renderStone(4)}
                     {this.renderStone(5)}
                 </View>
-                <View className="board-row">
+                <View style={{flex: 1, flexDirection: 'row'}} className="board-row">
                     {this.renderStone(6)}
                     {this.renderStone(7)}
                     {this.renderStone(8)}
