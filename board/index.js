@@ -1,13 +1,15 @@
-import * as React from 'react';
-import {Svg} from 'react-native-svg';
+import React from "react";
+import {Polygon, Svg} from 'react-native-svg';
 
 import {Cell} from "./Cell";
 import {gridPoints} from "./utils"
 
 export const Board = (props) => {
+
     const grid = gridPoints(50, 50, 22, props.size, props.size).map(({props}, index) => (
-        <Cell {...props} onPress={() => {
-        }} fill="#FFFFFF" stroke="#222222" key={index}/>
+        <Cell onPress={() => {
+            console.log("onPress")
+        }} {...props} fill="#FFFFFF" stroke="#222222" key={index}/>
     ));
 
     return (
