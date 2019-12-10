@@ -1,13 +1,13 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-import {Board} from "./board";
+import Board from "./board";
 
 export default function App() {
     return (
         <View style={styles.container}>
             <Text>Hex Game</Text>
-            <Board size="8" />
+            <Board size={6} />
         </View>
     );
 }

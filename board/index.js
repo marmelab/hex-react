@@ -4,22 +4,16 @@ import {Svg} from 'react-native-svg';
 import Cell from "./Cell";
 import {gridPoints} from "./utils"
 
-export class Board extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {color: "white"};
-    }
+function Board(props) {
+    const grid = gridPoints('pointy-topped', 50, 50, 22, props.size, props.size).map(({props}, index) => (
+        <Cell {...props} onPress={() => {}} fill="#FFFFFF" stroke="#222222" key={index}/>
+    ));
 
-    render() {
-
-        const grid = gridPoints('pointy-topped', 100, 100, 20, this.props.size, this.props.size).map(({props}, index) => (
-            <Cell {...props} fill="white" stroke="black" key={index}/>
-        ));
-
-        return (
-            <Svg width="500" height="500">
-                {grid}
-            </Svg>
-        );
-    }
+    return (
+        <Svg width="500" height="500">
+            {grid}
+        </Svg>
+    );
 }
+
+export default Board

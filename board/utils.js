@@ -40,8 +40,8 @@ export const gridPoint = (oType, oX, oY, size, gridX, gridY) => {
     /* eslint-disable no-else-return */
     /* reason: it seems buggy */
     if (oType === POINTY) {
-        const height = size * 2;
-        const width = size * SQRT3;
+        const height = size * 1;
+        const width = size * 0.85;
         const diffXFromY = gridY * width / 2;
         const gridPointX = gridX * width + diffXFromY;
         const gridPointY = gridY * height * 0.75;
