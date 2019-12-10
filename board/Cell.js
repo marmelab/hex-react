@@ -8,5 +8,7 @@ export const Cell = (props) => {
 
     const [color, setColor] = useState("white");
 
-    return <Polygon {...props} color={color} points={points.map(p => p.join(',')).join(' ')}/>;
+    return <Polygon onPress={() => {
+        setColor("#03a9fc")
+    }} {...props} fill={color} points={points.map(p => p.join(',')).join(' ')}/>;
 }
