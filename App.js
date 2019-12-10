@@ -1,23 +1,16 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {createAppContainer} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
 
-import {Display} from "./ui";
+import TrainingScreen from "./training";
+import HomeScreen from "./home";
 
-export default function App() {
-
-    return (
-        <View style={styles.container}>
-            <Text>Hex Game</Text>
-            <Display/>
-        </View>
-    );
-}
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
+const MainNavigator = createStackNavigator({
+    Home: HomeScreen,
+    Training: TrainingScreen,
+}, {
+    initialRouteName: "Home"
 });
+
+const App = createAppContainer(MainNavigator);
+
+export default App;
