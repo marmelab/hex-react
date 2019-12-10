@@ -21,4 +21,4 @@ make test
 ```
 ## License
 
-Hex React is licensed under the [MIT License](LICENSE), courtesy of [Marmelab](http://marmelab.com).
+Cell React is licensed under the [MIT License](LICENSE), courtesy of [Marmelab](http://marmelab.com).
