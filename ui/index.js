@@ -1,24 +1,15 @@
-import React from "react";
-import {Button, StyleSheet, View} from "react-native";
+import React, {useState} from 'react';
 
+import {Board} from "../board";
+import {Menu} from "./Menu";
 
-export const TrainingButton = () => {
-    return <Button
-        title="Training mode"
-        color="#999999"
-        onPress={() => setMode('TRAINING')}
-    />
-};
+export const Display = () => {
 
-export const Menu = () => {
-    return <View style={styles.menu}>
-        <TrainingButton/>
-    </View>
-};
+    const [mode, setMode] = useState("CHOOSE");
 
-const styles = StyleSheet.create({
-        menu: {
-            marginTop: 20
-        },
+    if (mode === "TRAINING") {
+        return <Board size={6}/>
+    } else if (mode === 'CHOOSE') {
+        return <Menu setMode={setMode}/>
     }
-);
+};

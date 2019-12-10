@@ -1,25 +1,14 @@
-import React, {useState} from 'react';
-import {StyleSheet, Text, View, Button} from 'react-native';
+import React from 'react';
+import {StyleSheet, Text, View} from 'react-native';
 
-import {Board} from "./board";
-import {Menu} from "./ui";
+import {Display} from "./ui";
 
 export default function App() {
-
-    const [mode, setMode] = useState("CHOOSE");
-
-    const display = () => {
-        if (mode === "TRAINING") {
-            return <Board size={6}/>
-        } else if (mode === 'CHOOSE') {
-            return <Menu/>
-        }
-    };
 
     return (
         <View style={styles.container}>
             <Text>Hex Game</Text>
-            {display()}
+            <Display/>
         </View>
     );
 }
