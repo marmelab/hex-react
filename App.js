@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-import Board from "./board";
+import {Board} from "./board";
 
 export default function App() {
     return (

@@ -2,10 +2,8 @@ import React from 'react';
 import {corners} from './utils';
 import {Polygon} from "react-native-svg";
 
-function Cell(props) {
-    const {type, x, y, size} = props;
-    const points = corners(type, x, y, size);
+export const Cell = (props) => {
+    const {x, y, size} = props;
+    const points = corners(x, y, size);
     return <Polygon  {...props} points={points.map(p => p.join(',')).join(' ')}/>;
 }
-
-export default Cell
