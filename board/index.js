@@ -1,5 +1,5 @@
 import React from "react";
-import {Polygon, Svg} from 'react-native-svg';
+import {Svg} from 'react-native-svg';
 
 import {Cell} from "./Cell";
 import {gridPoints} from "./utils"
