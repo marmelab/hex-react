@@ -8,7 +8,16 @@ const MainNavigator = createStackNavigator({
     Home: HomeScreen,
     Training: TrainingScreen,
 }, {
-    initialRouteName: "Home"
+    initialRouteName: "Home",
+    defaultNavigationOptions: {
+        title: "Hex Game",
+        headerTitleStyle: {
+            textAlign: 'center',
+            fontWeight: 'bold',
+            fontSize: 18,
+            marginTop: 0,
+        },
+    },
 });
 
 const App = createAppContainer(MainNavigator);

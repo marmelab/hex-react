@@ -6,7 +6,7 @@ import {gridPoints} from "./utils"
 
 export const Board = (props) => {
 
-    const grid = gridPoints(50, 50, 22, props.size, props.size).map(({props}, index) => (
+    const grid = gridPoints(20, 75, 22, props.size, props.size).map(({props}, index) => (
         <Cell {...props} stroke="#222222" key={index}/>
     ));
 
