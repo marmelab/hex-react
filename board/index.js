@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {Svg} from 'react-native-svg';
 
 import {Cell} from "./Cell";
@@ -17,6 +17,10 @@ export const Board = (props) => {
         grid[index] = player;
         setGrid(grid)
     };
+
+    useEffect(() => {
+        console.log(grid)
+    }, [grid]);
 
     const cells = gridPoints(20, 75, 22, size, size).map(({props}, index) => (
         <Cell {...props} onPress={() => handleCellOnPress(index)} number={index} key={index}
