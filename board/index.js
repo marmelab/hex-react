@@ -6,7 +6,7 @@ import {gridPoints} from "./utils"
 
 export const Board = (props) => {
 
-    const size = 10
+    const size = 6;
 
     const [grid, setGrid] = useState(Array(size * size).fill(0));
 
@@ -18,14 +18,14 @@ export const Board = (props) => {
         setGrid(grid)
     };
 
-    const gridPoints = gridPoints(20, 75, 22, size, size).map(({props}, index) => (
+    const cells = gridPoints(20, 75, 22, size, size).map(({props}, index) => (
         <Cell {...props} onPress={() => handleCellOnPress(index)} number={index} key={index}
               player={grid[index - 1]}/>
     ));
 
     return (
         <Svg width="500" height="500">
-            {gridPoints}
+            {cells}
         </Svg>
     );
 };
