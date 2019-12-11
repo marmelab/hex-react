@@ -8,20 +8,17 @@ export const Board = (props) => {
 
     const [matrix, setMatrix] = useState(Array(props.size * props.size).fill(0));
 
-    const game = {
-        width: props.size,
-        matrix: matrix,
-        // @todo: Add the management of 2 players but for the training mode, it's good enough.
-        player: props.mode === "training" ? 1 : 2
-    };
+    // @todo: Add the management of 2 players but for the training mode, it's good enough.
+    const player = props.mode === "training" ? 1 : 2;
 
-    const handleCellOnPress = (props) => {
-        console.log(props)
+    const handleCellOnPress = (index) => {
+        matrix[index] = player;
+        setMatrix(matrix)
     };
 
     const grid = gridPoints(20, 75, 22, props.size, props.size).map(({props}, index) => (
-        <Cell {...props} onPress={handleCellOnPress} number={index} key={index}
-              player={game.matrix[index - 1]}/>
+        <Cell {...props} onPress={() => handleCellOnPress(index)} number={index} key={index}
+              player={matrix[index - 1]}/>
     ));
 
     return (

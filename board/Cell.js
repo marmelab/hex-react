@@ -15,5 +15,5 @@ export const Cell = (props) => {
         return "white";
     };
 
-    return <Polygon {...props} stroke="#222222" fill={color} points={points.map(p => p.join(',')).join(' ')}/>;
+    return <Polygon {...props} stroke="#222222" fill={color()} points={points.map(p => p.join(',')).join(' ')}/>;
 };
