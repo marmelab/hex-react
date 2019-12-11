@@ -25,7 +25,7 @@ export const Board = (props) => {
 
     return (
         <Svg width="500" height="500">
-            {grid}
+            {gridPoints}
         </Svg>
     );
 };
