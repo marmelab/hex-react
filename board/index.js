@@ -4,6 +4,31 @@ import {Svg} from 'react-native-svg';
 import {Cell} from "./Cell";
 import {gridPoints} from "./utils"
 
+const url = 'https://hex-go.cleverapps.io/';
+
+async function isWonFromAPI(grid, player) {
+    try {
+        let response = await fetch(
+            url + 'games/is-won', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    grid: grid,
+                    player: player,
+                }),
+            }
+        );
+        let responseJson = await response.json();
+        return responseJson.isWon;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+
 export const Board = (props) => {
 
     const size = 6;
@@ -20,7 +45,22 @@ export const Board = (props) => {
     };
 
     useEffect(() => {
-        console.log(grid)
+
+        const isWon = isWonFromAPI(grid, player).then((response) => response.json())
+            .then((responseJson) => {
+                return responseJson.isWon;
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+        console.log(isWon);
+
+        if (isWon) {
+            console.log("won")
+        } else {
+            console.log("lost")
+        }
     }, [grid]);
 
     const cells = gridPoints(20, 75, 22, size, size).map(({props}, index) => (
