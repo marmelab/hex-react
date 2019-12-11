@@ -1,35 +1,27 @@
-import React from "react";
+import React, {useState} from "react";
 import {Svg} from 'react-native-svg';
 
 import {Cell} from "./Cell";
 import {gridPoints} from "./utils"
-import {range} from "./utils"
-
-// Init an empty matrix
-const matrix = (size) => {
-
-    let matrix = [];
-
-    [...range(0, size)].forEach((i) => {
-        [...range(0, size)].forEach((j) => {
-            matrix[i][j] = 0;
-        });
-    });
-
-    return matrix
-};
 
 export const Board = (props) => {
 
+    const [matrix, setMatrix] = useState(Array(props.size * props.size).fill(0));
+
     const game = {
         width: props.size,
-        matrix: matrix(props.size)
+        matrix: matrix,
+        // @todo: Add the management of 2 players but for the training mode, it's good enough.
+        player: props.mode === "training" ? 1 : 2
     };
 
-    // console.log(game.matrix);
+    const handleCellOnPress = (props) => {
+        console.log(props.number)
+    };
 
     const grid = gridPoints(20, 75, 22, props.size, props.size).map(({props}, index) => (
-        <Cell {...props} stroke="#222222" key={index}/>
+        <Cell {...props} onPress={handleCellOnPress} stroke="#222222" number={index} key={index}
+              player={game.matrix[index - 1]}/>
     ));
 
     return (
@@ -37,4 +29,4 @@ export const Board = (props) => {
             {grid}
         </Svg>
     );
-}
+};

@@ -3,7 +3,7 @@ import React from "react";
 import {Board} from "../board";
 
 const TrainingScreen = () => {
-    return <Board size={6}/>
+    return <Board size={6} mode={"training"}/>
 };
 
 export default TrainingScreen
