@@ -12,7 +12,7 @@ const RANGE6 = [0, 60, 120, 180, 240, 300];
 const getDiff = () => {
     return Math.PI / 6;
 };
-const range = n => Array.from(Array(n).keys());
+export const range = n => Array.from(Array(n).keys());
 const product = (p, q) => {
     const l = [];
     range(p).forEach((i) => {
