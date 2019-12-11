@@ -42,14 +42,12 @@ export const Board = (props) => {
         fetchIsWon();
     }, [grid]);
 
-    const cells = gridPoints(20, 75, 22, props.size, props.size).map(({props}, index) => (
-        <Cell {...props} onPress={() => handleCellOnPress(index)} number={index} key={index}
-              player={grid[index]}/>
-    ));
-
     return (
         <Svg width="500" height="500">
-            {cells}
+            {gridPoints(20, 75, 22, props.size, props.size).map(({props}, index) => (
+                <Cell {...props} onPress={() => handleCellOnPress(index)} number={index} key={index}
+                      player={grid[index]}/>
+            ))}
         </Svg>
     );
 };
