@@ -12,10 +12,8 @@ export const Cell = (props) => {
         } else if (props.player === 2) {
             return "#daf545";
         }
-        return "#FFFFFF";
+        return "white";
     };
 
-    return <Polygon onPress={() => {
-        setPlayer(props.id)
-    }} {...props} fill={color} points={points.map(p => p.join(',')).join(' ')}/>;
+    return <Polygon {...props} stroke="#222222" fill={color} points={points.map(p => p.join(',')).join(' ')}/>;
 };

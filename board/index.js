@@ -20,7 +20,7 @@ export const Board = (props) => {
     };
 
     const grid = gridPoints(20, 75, 22, props.size, props.size).map(({props}, index) => (
-        <Cell {...props} onPress={handleCellOnPress} stroke="#222222" number={index} key={index}
+        <Cell {...props} onPress={handleCellOnPress}  number={index} key={index}
               player={game.matrix[index - 1]}/>
     ));
 
