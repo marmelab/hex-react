@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 import {Svg, Text} from "react-native-svg";
-import {View} from 'react-native'
 
 import {Cell} from "./Cell";
 import {gridPoints} from "./utils"
