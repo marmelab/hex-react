@@ -14,8 +14,9 @@ export const Board = (props) => {
     const player = props.mode === "training" ? 1 : 2;
 
     const handleCellOnPress = (index) => {
-        grid[index] = player;
-        setGrid(grid)
+        const gridCopy = grid.slice();
+        gridCopy[index] = player;
+        setGrid(gridCopy)
     };
 
     useEffect(() => {
