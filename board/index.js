@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect} from 'react';
 import {Svg} from 'react-native-svg';
+import {IA_ENDPOINT} from 'react-native-dotenv'
 
 import {Cell} from "./Cell";
 import {gridPoints} from "./utils"
@@ -8,21 +9,20 @@ export const Board = (props) => {
 
     const [grid, setGrid] = useState(Array(props.size * props.size).fill(0));
     const [isWon, setIsWon] = useState(false);
+    const [player, setPlayer] = useState(1);
 
-    // @todo: Add the management of 2 players but for the training mode, it's good enough.
-    const player = props.mode === "training" ? 1 : 2;
-
-    const handleCellOnPress = (index) => {
-        const gridCopy = grid.slice();
-        gridCopy[index] = player;
-        setGrid(gridCopy)
+    const handleCellOnPress = (cellNumber, player) => {
+        const updatedGrid = grid.map((cell, index) => {
+            return cellNumber === index ? player : cell;
+        });
+        setGrid(updatedGrid);
     };
 
     useEffect(() => {
 
         const fetchIsWon = async (grid, player) => {
             try {
-                const url = "https://hex-go.cleverapps.io/games/is-won";
+                const url = `${IA_ENDPOINT}/games/is-won`;
                 const response = await fetch(url, {
                         method: 'POST',
                         headers: {
