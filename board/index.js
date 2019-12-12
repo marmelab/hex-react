@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 import {Svg, Text} from "react-native-svg";
-import {View} from 'react-native'
 
 import {Cell} from "./Cell";
 import {gridPoints} from "./utils"
@@ -44,10 +43,16 @@ export const Board = (props) => {
                     You win !
                 </Text>
             )}
+            <Polygon points="0,120 255,120 180,220" fill="#03a9fc" stroke="#222222" strokeWidth="1"/>
+            <Polygon points="180,220 360,345 105,345" fill="#03a9fc" stroke="#222222" strokeWidth="1"/>
+
+            <Polygon points="0,120 180,220 105,345" fill="#f4d032" stroke="#222222" strokeWidth="1"/>
+            <Polygon points="255,120 360,345 180,220" fill="#f4d032" stroke="#222222" strokeWidth="1"/>
 
             {gridPoints(20, 75, 22, props.size, props.size).map(({props}, index) => (
                 <Cell {...props} onPress={() => handleCellOnPress(index, player)} value={grid[index]} key={index}/>
             ))}
+
         </Svg>
     );
 };
