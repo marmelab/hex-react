@@ -16,7 +16,7 @@ export const Board = (props) => {
     const [winner, setWinner] = useState(0);
 
     const handleCellOnPress = (cellNumber, player) => {
-        if (isLoading || isWon) {
+        if (isLoading || isWon || grid[cellNumber] !== 0) {
             return;
         }
         const updatedGrid = grid.map((cell, index) => {
@@ -37,7 +37,9 @@ export const Board = (props) => {
             setIsLoading(false);
 
             // @todo: Tricky part to remove
-            if (isWon && player === 1) {
+            if (props.mode === "training") {
+                setWinner(1)
+            } else if (isWon && player === 1) {
                 setWinner(2);
             } else if (isWon && player === 2) {
                 setWinner(1);
@@ -46,7 +48,6 @@ export const Board = (props) => {
 
         callApi();
     }, [grid]);
-
 
     return (
         <Svg width="500" height="500">
