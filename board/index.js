@@ -4,7 +4,7 @@ import {Svg, Text} from "react-native-svg";
 import {Cell} from "./Cell";
 import {gridPoints} from "./utils"
 import {fetchIsWon} from "./request";
-import {player1Color} from "../theme";
+import {neutralColor, player1Color, player2Color} from "../theme";
 import {BottomBoard} from "./BottomBoard";
 
 export const Board = (props) => {
@@ -13,6 +13,7 @@ export const Board = (props) => {
     const [isWon, setIsWon] = useState(false);
     const [player, setPlayer] = useState(1);
     const [isLoading, setIsLoading] = useState(false);
+    const [winner, setWinner] = useState(0);
 
     const handleCellOnPress = (cellNumber, player) => {
         if (isLoading || isWon) {
@@ -34,16 +35,26 @@ export const Board = (props) => {
             const {isWon} = await fetchIsWon(grid, player);
             setIsWon(isWon);
             setIsLoading(false);
+
+            // @todo: Tricky part to remove
+            if (isWon && player === 1) {
+                setWinner(2);
+            } else if (isWon && player === 2) {
+                setWinner(1);
+            }
         });
 
         callApi();
     }, [grid]);
 
+
     return (
         <Svg width="500" height="500">
             {isWon && (
-                <Text fill={player1Color} fontSize="32" fontWeight="bold" x="175" y="450" textAnchor="middle">
-                    You win !
+                <Text fill={winner === 1 ? player1Color : winner === 2 ? player2Color : neutralColor} fontSize="32"
+                      fontWeight="bold"
+                      x="175" y="450" textAnchor="middle">
+                    {`Player ${winner} has won !`}
                 </Text>
             )}
             <BottomBoard/>
