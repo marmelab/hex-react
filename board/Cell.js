@@ -1,12 +1,16 @@
 import React from "react";
-import {corners} from './utils';
+import {corners} from "./utils";
 import {Polygon} from "react-native-svg";
+import {player1Color, player2Color} from "./theme";
+
+const cellFillColor = "#FFFFFF";
+const cellStrokeColor = "#222222";
 
 export const Cell = (props) => {
-    const {x, y, size} = props;
+    const {x, y, size, value} = props;
     const points = corners(x, y, size);
 
-    const color = props.player === 1 ? "#03a9fc" : props.player === 2 ? "#daf545" : "#FFFFFF";
+    const color = value === 1 ? player1Color : value === 2 ? player2Color : cellFillColor;
 
-    return <Polygon {...props} stroke="#222222" fill={color} points={points.map(p => p.join(',')).join(' ')}/>;
+    return <Polygon {...props} stroke={cellStrokeColor} fill={color} points={points.map(p => p.join(',')).join(' ')}/>;
 };
