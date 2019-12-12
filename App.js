@@ -21,10 +21,6 @@ const MainNavigator = createStackNavigator({
     },
 });
 
-if (DEBUG) {
-    GLOBAL.XMLHttpRequest = GLOBAL.originalXMLHttpRequest || GLOBAL.XMLHttpRequest;
-}
-
 const App = createAppContainer(MainNavigator);
 
 export default App;
