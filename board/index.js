@@ -16,12 +16,13 @@ export const Board = (props) => {
 
 
     const handleCellOnPress = (cellNumber, player) => {
-        if (!isLoading || isWon) {
-            const updatedGrid = grid.map((cell, index) => {
-                return cellNumber === index ? player : cell;
-            });
-            setGrid(updatedGrid);
+        if (isLoading || isWon) {
+            return;
         }
+        const updatedGrid = grid.map((cell, index) => {
+            return cellNumber === index ? player : cell;
+        });
+        setGrid(updatedGrid);
     };
 
     const callApi = async () => {
@@ -41,7 +42,7 @@ export const Board = (props) => {
             {isWon ?
                 <Text fill={player1Color} fontSize="32" fontWeight="bold" x="175" y="450" textAnchor="middle">
                     You win !
-                </Text> :  <Text fill={player2Color} fontSize="32" fontWeight="bold" x="175" y="450" textAnchor="middle">
+                </Text> : <Text fill={player2Color} fontSize="32" fontWeight="bold" x="175" y="450" textAnchor="middle">
                     Keep trying !
                 </Text>}
 
