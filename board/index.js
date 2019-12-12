@@ -19,16 +19,15 @@ export const Board = (props) => {
     };
 
     useEffect(() => {
-
+        // @todo: Extract this code into a client
         const fetchIsWon = async (grid, player) => {
             try {
                 const url = `${IA_ENDPOINT}/games/is-won`;
                 const response = await fetch(url, {
                         method: 'POST',
+                        credentials: 'same-origin',
                         headers: {
-                            Accept: '*/*',
-                            'Content-Type': 'application/json',
-                            'Host': 'hex-go.cleverapps.io',
+                            'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({grid, player}),
                     }
@@ -45,8 +44,7 @@ export const Board = (props) => {
     return (
         <Svg width="500" height="500">
             {gridPoints(20, 75, 22, props.size, props.size).map(({props}, index) => (
-                <Cell {...props} onPress={() => handleCellOnPress(index)} number={index} key={index}
-                      player={grid[index]}/>
+                <Cell {...props} onPress={() => handleCellOnPress(index, player)} value={grid[index]} key={index}/>
             ))}
         </Svg>
     );
