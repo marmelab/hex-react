@@ -1,6 +1,6 @@
 import React from "react";
 import {Polygon, Svg} from "react-native-svg";
-import {player1Color, player2Color, strokeColor} from "./theme";
+import {player1Color, player2Color, strokeColor} from "../theme";
 
 export const BottomBoard = () => {
     return <Svg>

@@ -4,7 +4,7 @@ import {Svg, Text} from "react-native-svg";
 import {Cell} from "./Cell";
 import {gridPoints} from "./utils"
 import {fetchIsWon} from "./request";
-import {player1Color} from "./theme";
+import {player1Color} from "../theme";
 import {BottomBoard} from "./BottomBoard";
 
 export const Board = (props) => {
@@ -22,6 +22,10 @@ export const Board = (props) => {
             return cellNumber === index ? player : cell;
         });
         setGrid(updatedGrid);
+
+        if (props.mode === "local") {
+            setPlayer(player === 1 ? 2 : 1);
+        }
     };
 
     useEffect(() => {

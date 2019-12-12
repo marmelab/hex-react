@@ -1,12 +1,14 @@
 import {createAppContainer} from "react-navigation";
 import {createStackNavigator} from "react-navigation-stack";
 
-import TrainingScreen from "./training";
 import HomeScreen from "./home";
+import TrainingScreen from "./screen/TrainingScreen";
+import TwoPlayerScreen from "./screen/TwoPlayerScreen";
 
 const MainNavigator = createStackNavigator({
     Home: HomeScreen,
     Training: TrainingScreen,
+    TwoPlayer: TwoPlayerScreen,
 }, {
     initialRouteName: "Home",
     defaultNavigationOptions: {
@@ -15,7 +17,7 @@ const MainNavigator = createStackNavigator({
             textAlign: 'center',
             fontWeight: 'bold',
             fontSize: 18,
-            marginTop: 0,
+            marginTop: 20,
         },
     },
 });
