@@ -25,26 +25,25 @@ export const Board = (props) => {
         setGrid(updatedGrid);
     };
 
-    const callApi = async () => {
-        setIsLoading(true);
-        const {isWon} = await fetchIsWon(grid, player);
-        setIsWon(isWon);
-        setIsLoading(false);
-    };
-
     useEffect(() => {
+        const callApi = (async () => {
+            setIsLoading(true);
+            const {isWon} = await fetchIsWon(grid, player);
+            setIsWon(isWon);
+            setIsLoading(false);
+        });
+
         callApi();
     }, [grid]);
 
     return (
         <Svg width="500" height="500">
 
-            {isWon ?
+            {isWon && (
                 <Text fill={player1Color} fontSize="32" fontWeight="bold" x="175" y="450" textAnchor="middle">
                     You win !
-                </Text> : <Text fill={player2Color} fontSize="32" fontWeight="bold" x="175" y="450" textAnchor="middle">
-                    Keep trying !
-                </Text>}
+                </Text>
+            )}
 
             {gridPoints(20, 75, 22, props.size, props.size).map(({props}, index) => (
                 <Cell {...props} onPress={() => handleCellOnPress(index, player)} value={grid[index]} key={index}/>
