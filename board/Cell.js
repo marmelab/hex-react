@@ -1,7 +1,7 @@
 import React from "react";
 import {corners} from "./utils";
 import {Polygon} from "react-native-svg";
-import {player1Color, player2Color, cellFillColor, cellStrokeColor} from "./theme";
+import {player1Color, player2Color, cellFillColor, strokeColor} from "./theme";
 
 export const Cell = (props) => {
     const {x, y, size, value} = props;
@@ -9,5 +9,5 @@ export const Cell = (props) => {
 
     const color = value === 1 ? player1Color : value === 2 ? player2Color : cellFillColor;
 
-    return <Polygon {...props} stroke={cellStrokeColor} fill={color} points={points.map(p => p.join(',')).join(' ')}/>;
+    return <Polygon {...props} stroke={strokeColor} fill={color} points={points.map(p => p.join(',')).join(' ')}/>;
 };
