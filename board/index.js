@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import {Svg} from 'react-native-svg';
-import {IA_ENDPOINT} from 'react-native-dotenv'
+import React, {useState, useEffect} from "react";
+import {Svg} from "react-native-svg";
+import {IA_ENDPOINT} from "react-native-dotenv";
 
 import {Cell} from "./Cell";
 import {gridPoints} from "./utils"
