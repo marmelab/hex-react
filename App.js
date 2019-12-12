@@ -1,6 +1,5 @@
 import {createAppContainer} from "react-navigation";
 import {createStackNavigator} from "react-navigation-stack";
-import {DEBUG} from "react-native-dotenv";
 
 import TrainingScreen from "./training";
 import HomeScreen from "./home";

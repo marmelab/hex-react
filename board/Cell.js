@@ -1,7 +1,7 @@
 import React from "react";
 import {corners} from "./utils";
 import {Polygon} from "react-native-svg";
-import {player1Color, player2Color, cellFillColor, strokeColor} from "./theme";
+import {cellFillColor, player1Color, player2Color, strokeColor} from "./theme";
 
 export const Cell = (props) => {
     const {x, y, size, value} = props;

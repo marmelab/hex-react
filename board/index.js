@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from "react";
-import {Svg, Text, Polygon} from "react-native-svg";
+import React, {useEffect, useState} from "react";
+import {Svg, Text} from "react-native-svg";
 
 import {Cell} from "./Cell";
 import {gridPoints} from "./utils"
 import {fetchIsWon} from "./request";
-import {player1Color, player2Color} from "./theme";
-import {Gameboard} from "./Gameboard";
+import {player1Color} from "./theme";
+import {BottomBoard} from "./BottomBoard";
 
 export const Board = (props) => {
 
@@ -42,7 +42,7 @@ export const Board = (props) => {
                     You win !
                 </Text>
             )}
-            <Gameboard/>
+            <BottomBoard/>
             {gridPoints(20, 75, 22, props.size, props.size).map(({props}, index) => (
                 <Cell {...props} onPress={() => handleCellOnPress(index, player)} value={grid[index]} key={index}/>
             ))}
