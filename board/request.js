@@ -14,9 +14,7 @@ export const fetchIsWon = async (grid, player) => {
                 body: JSON.stringify({"array": grid, "player": player}),
             }
         );
-        const {isWon} = await response.json();
-
-        return isWon;
+        return await response.json();
     } catch (error) {
         console.error('apierror', error);
     }

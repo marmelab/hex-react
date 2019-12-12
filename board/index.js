@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from "react";
 import {Svg, Text} from "react-native-svg";
+import {View} from 'react-native'
 
 import {Cell} from "./Cell";
 import {gridPoints} from "./utils"
 import {fetchIsWon} from "./request";
-import {player1Color} from "./theme";
+import {player1Color, player2Color} from "./theme";
 
 export const Board = (props) => {
 
@@ -23,25 +24,26 @@ export const Board = (props) => {
         }
     };
 
-    useEffect(() => {
+    const callApi = async () => {
         setIsLoading(true);
-        const {isWon} = fetchIsWon(grid, player);
+        const {isWon} = await fetchIsWon(grid, player);
         setIsWon(isWon);
         setIsLoading(false);
-    }, [grid]);
-
-    const isWonPanel = () => {
-        if (isWon) {
-            return <Text fill={player1Color} fontSize="32" fontWeight="bold" x="175" y="450" textAnchor="middle">
-                You win !
-            </Text>
-        }
     };
+
+    useEffect(() => {
+        callApi();
+    }, [grid]);
 
     return (
         <Svg width="500" height="500">
 
-            {isWonPanel}
+            {isWon ?
+                <Text fill={player1Color} fontSize="32" fontWeight="bold" x="175" y="450" textAnchor="middle">
+                    You win !
+                </Text> :  <Text fill={player2Color} fontSize="32" fontWeight="bold" x="175" y="450" textAnchor="middle">
+                    Keep trying !
+                </Text>}
 
             {gridPoints(20, 75, 22, props.size, props.size).map(({props}, index) => (
                 <Cell {...props} onPress={() => handleCellOnPress(index, player)} value={grid[index]} key={index}/>
