@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+import {StyleSheet} from 'react-native';
 import {Svg, Text} from "react-native-svg";
 
 import {Cell} from "./Cell";
@@ -6,6 +7,7 @@ import {gridPoints} from "./utils"
 import {fetchIsWon} from "./request";
 import {neutralColor, player1Color, player2Color} from "../theme";
 import {BottomBoard} from "./BottomBoard";
+import Button from "../theme/Button";
 
 export const Board = (props) => {
 
@@ -50,14 +52,17 @@ export const Board = (props) => {
     }, [grid]);
 
     return (
-        <Svg width="500" height="500">
-            {!isWon && (
-            <Text fill={player === 1 ? player1Color : player === 2 ? player2Color : neutralColor} fontSize="22"
-                  x="300" y="25" textAnchor="middle">
-                {`Player ${player}`}
-            </Text>
+        <Svg style={styles.mainConatinerStyle} width="500" height="500">
+            {props.mode === "training" && (
+                <Button style={styles.adviceButtonStyle} title="Ask advice"
+                        onPress={() => Alert.alert('Simple Button pressed')}/>
             )}
-
+            {!isWon && (
+                <Text fill={player === 1 ? player1Color : player === 2 ? player2Color : neutralColor} fontSize="22"
+                      x="300" y="25" textAnchor="middle">
+                    {`Player ${player}`}
+                </Text>
+            )}
             {isWon && (
                 <Text fill={winner === 1 ? player1Color : winner === 2 ? player2Color : neutralColor} fontSize="32"
                       fontWeight="bold"
@@ -72,3 +77,18 @@ export const Board = (props) => {
         </Svg>
     );
 };
+
+const styles = StyleSheet.create({
+    adviceButtonStyle: {
+        alignSelf: 'flex-end',
+        position: 'absolute',
+        bottom: 35
+    },
+
+    mainConatinerStyle: {
+        flexDirection: 'column',
+        flex: 1
+    }
+});
+
+

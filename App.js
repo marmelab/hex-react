@@ -2,8 +2,8 @@ import {createAppContainer} from "react-navigation";
 import {createStackNavigator} from "react-navigation-stack";
 
 import HomeScreen from "./home";
-import TrainingScreen from "./screen/TrainingScreen";
-import TwoPlayerScreen from "./screen/TwoPlayerScreen";
+import {TrainingScreen} from "./screen/TrainingScreen";
+import {TwoPlayerScreen} from "./screen/TwoPlayerScreen";
 
 const MainNavigator = createStackNavigator({
     Home: HomeScreen,
