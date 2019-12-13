@@ -12,6 +12,8 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb": "^18.0.1",
     "expo": "35.0.0",
     "react": "16.8.3",
     "react-dom": "16.8.3",
