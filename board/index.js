@@ -37,7 +37,7 @@ export const Board = (props) => {
             setIsLoading(false);
 
             // @todo: Tricky part to remove
-            if (props.mode === "training") {
+            if (isWon && props.mode === "training") {
                 setWinner(1)
             } else if (isWon && player === 1) {
                 setWinner(2);
