@@ -1,7 +1,7 @@
 export const neutralColor = '#FFFFFF';
 
-export const trainingMenuColor = '#1cbec7';
-export const sameDeviceColor = '#63c71c';
+export const trainingMenuColor = '#344955';
+export const sameDeviceColor = '#4A6572';
 
 export const player1Color = '#03a9fc';
 export const player2Color = '#f4d032';

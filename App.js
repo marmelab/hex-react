@@ -17,7 +17,7 @@ const MainNavigator = createStackNavigator({
       textAlign: 'center',
       fontWeight: 'bold',
       fontSize: 18,
-      marginTop: 20,
+      marginTop: 0,
     },
   },
 });
