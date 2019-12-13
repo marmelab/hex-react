@@ -1,6 +1,3 @@
 {
-  "extends": "airbnb",
-  "plugins": [
-    "plugin:jsx-a11y/recommended"
-  ]
+  "extends": "airbnb"
 }

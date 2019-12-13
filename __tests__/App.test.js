@@ -1,5 +1,5 @@
 describe('<App />', () => {
-    it('renders correctly', () => {
-        expect(1).toEqual(1);
-    });
+  it('renders correctly', () => {
+    expect(1).toEqual(1);
+  });
 });
